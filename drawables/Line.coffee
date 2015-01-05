@@ -4,20 +4,18 @@ class drawjs.Line extends drawjs.Drawable
 		@p0 = new Point(x0, y0)
 		@p1 = new Point(x1, y1)
 	
-	draw: (canvas, doAnimate) ->
-		if doAnimate
-			
-			vector = @p0.getVectorTo(@p1)
-			sublineLength = 2 # TODO: this shouldn't be hard coded.
-			lineLength = vector.getLength()
-			numberOfSubLines = Math.floor(lineLength / sublineLength)
-			vector.scale(1/numberOfSubLines)
-			@draw2(canvas, doAnimate, @p0, vector, numberOfSubLines)
-			
-		else
-			canvas.drawLine(@)
+	draw: (canvas) ->
+		canvas.drawLine(@)
 	
-	draw2: (canvas, doAnimate, start, movement, numberOfSublinesLeft) ->
+	animate: (canvas) ->
+		vector = @p0.getVectorTo(@p1)
+		sublineLength = 2 # TODO: this shouldn't be hard coded.
+		lineLength = vector.getLength()
+		numberOfSubLines = Math.floor(lineLength / sublineLength)
+		vector.scale(1/numberOfSubLines)
+		@animate2(canvas, @p0, vector, numberOfSubLines)
+	
+	animate2: (canvas, start, movement, numberOfSublinesLeft) ->
 		
 		if numberOfSublinesLeft == 0
 			end = @p1
@@ -32,6 +30,8 @@ class drawjs.Line extends drawjs.Drawable
 		if numberOfSublinesLeft == 0
 			# We're done!
 		else
-			setTimeout =>
-				@draw2(canvas, doAnimate, end, movement, numberOfSublinesLeft-1)
-			, 50 # TODO: this shouldn't be hard coded.
+			
+			animateNext = =>
+				@animate2(canvas, end, movement, numberOfSublinesLeft-1)
+			
+			setTimeout(animateNext, 50) # TODO: this shouldn't be hard coded.
