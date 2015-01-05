@@ -1,8 +1,8 @@
 class drawjs.Line extends drawjs.Drawable
 	
 	constructor: (x0, y0, x1, y1, @penRadius, @color) ->
-		@p0 = new drawjs.Point(x0, y0)
-		@p1 = new drawjs.Point(x1, y1)
+		@p0 = new Point(x0, y0)
+		@p1 = new Point(x1, y1)
 	
 	draw: (canvas, doAnimate) ->
 		if doAnimate
@@ -25,7 +25,7 @@ class drawjs.Line extends drawjs.Drawable
 			end = start.getCopy()
 			end.move(movement)
 		
-		subline = new drawjs.Line(start.x, start.y, end.x, end.y, @penRadius, @color)
+		subline = new Line(start.x, start.y, end.x, end.y, @penRadius, @color)
 		
 		canvas.drawLine(subline)
 		

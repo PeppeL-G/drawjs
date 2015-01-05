@@ -21,7 +21,8 @@ Package.onUse(function(api) {
 		'Point.coffee',
 		'Vector.coffee',
 		'drawables/Drawable.coffee',
-		'drawables/Line.coffee'
+		'drawables/Line.coffee',
+		'packageVariables.js'
 	], 'client')
 	
 	api.export([

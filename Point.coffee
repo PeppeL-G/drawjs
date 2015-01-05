@@ -13,7 +13,7 @@ class drawjs.Point
 		return point.y - @y
 	
 	getVectorTo: (point) ->
-		return new drawjs.Vector(@getXTo(point), @getYTo(point))
+		return new Vector(@getXTo(point), @getYTo(point))
 	
 	getDistanceTo: (point) ->
 		return @getVectorTo(point).getLength()
