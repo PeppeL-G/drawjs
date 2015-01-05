@@ -15,7 +15,10 @@ Package.onUse(function(api) {
 	], 'client')
 	
 	api.addFiles([
-		'drawjs.coffee'
+		'drawjs.coffee',
+		'Canvas.coffee',
+		'drawables/Drawable.coffee',
+		'drawables/Line.coffee'
 	], 'client')
 	
 	api.export([
