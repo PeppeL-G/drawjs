@@ -46,7 +46,7 @@ class drawjs.Canvas
 	drawLine: (line) ->
 		
 		@context.strokeStyle = line.color
-		@context.lineWidth   = line.radius * 2
+		@context.lineWidth   = line.penRadius * 2
 		
 		@context.beginPath()
 		@context.moveTo(line.x0, line.y0)
