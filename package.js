@@ -18,6 +18,7 @@ Package.onUse(function(api) {
 	api.addFiles([
 		'drawjs.coffee',
 		'Canvas.coffee',
+		'DrawInstructions.coffee',
 		'Point.coffee',
 		'Vector.coffee',
 		'drawables/Drawable.coffee',
