@@ -7,15 +7,15 @@ class drawjs.Line extends drawjs.Drawable
 	draw: (canvas) ->
 		canvas.drawLine(@)
 	
-	animate: (canvas) ->
+	animate: (canvas, doneCallback) ->
 		vector = @p0.getVectorTo(@p1)
 		sublineLength = 2 # TODO: this shouldn't be hard coded.
 		lineLength = vector.getLength()
 		numberOfSubLines = Math.floor(lineLength / sublineLength)
 		vector.scale(1/numberOfSubLines)
-		@animate2(canvas, @p0, vector, numberOfSubLines)
+		@animate2(canvas, @p0, vector, numberOfSubLines, doneCallback)
 	
-	animate2: (canvas, start, movement, numberOfSublinesLeft) ->
+	animate2: (canvas, start, movement, numberOfSublinesLeft, doneCallback) ->
 		
 		if numberOfSublinesLeft == 0
 			end = @p1
@@ -28,10 +28,10 @@ class drawjs.Line extends drawjs.Drawable
 		canvas.drawLine(subline)
 		
 		if numberOfSublinesLeft == 0
-			# We're done!
+			doneCallback()
 		else
 			
 			animateNext = =>
-				@animate2(canvas, end, movement, numberOfSublinesLeft-1)
+				@animate2(canvas, end, movement, numberOfSublinesLeft-1, doneCallback)
 			
 			setTimeout(animateNext, 50) # TODO: this shouldn't be hard coded.
