@@ -38,10 +38,6 @@ class drawjs.Canvas
 		@context.fillStyle = @color
 		@context.fillRect(0, 0, @width, @height)
 	
-	# This method should be called when one wants to draw something.
-	draw: (drawable) ->
-		drawable.draw(@)
-	
 	# Drawable objects may use this method to draw themselves.
 	drawLine: (line) ->
 		
@@ -49,6 +45,6 @@ class drawjs.Canvas
 		@context.lineWidth   = line.penRadius * 2
 		
 		@context.beginPath()
-		@context.moveTo(line.x0, line.y0)
-		@context.lineTo(line.x1, line.y1)
+		@context.moveTo(line.p0.x, line.p0.y)
+		@context.lineTo(line.p1.x, line.p1.y)
 		@context.stroke()

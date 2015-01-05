@@ -11,12 +11,15 @@ Package.onUse(function(api) {
 	api.versionsFrom('1.0.2.1')
 	
 	api.use([
-		'coffeescript'
+		'coffeescript',
+		'peppelg:do-nothing'
 	], 'client')
 	
 	api.addFiles([
 		'drawjs.coffee',
 		'Canvas.coffee',
+		'Point.coffee',
+		'Vector.coffee',
 		'drawables/Drawable.coffee',
 		'drawables/Line.coffee'
 	], 'client')
