@@ -14,4 +14,12 @@ Package.onUse(function(api) {
 		'coffeescript'
 	], 'client')
 	
+	api.addFiles([
+		'drawjs.coffee'
+	], 'client')
+	
+	api.export([
+		'drawjs'
+	], 'client')
+	
 })
